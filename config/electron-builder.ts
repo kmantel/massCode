@@ -2,7 +2,7 @@
 import type { Configuration } from 'electron-builder'
 import path from 'path'
 
-const isSponsored = process.env.VITE_SPONSORED === 'true'
+const isSponsored = true
 const isTestBuild = process.env.TEST_BUILD === 'true'
 const testMacArch = process.env.TEST_MAC_ARCH
 

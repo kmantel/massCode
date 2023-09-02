@@ -45,7 +45,7 @@ const HISTORY_LIMIT = 50
 export const useAppStore = defineStore('app', {
   state: (): State => ({
     isInit: false,
-    isSponsored: import.meta.env.VITE_SPONSORED === 'true',
+    isSponsored: true,
     theme: 'light:github',
     showTags: true,
     showModal: false,
