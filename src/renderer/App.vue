@@ -49,10 +49,6 @@ import type { Snippet } from '@shared/types/main/db'
 import { loadWASM } from 'onigasm'
 import onigasmFile from 'onigasm/lib/onigasm.wasm?url'
 import { loadGrammars } from '@/components/editor/grammars'
-import {
-  useSupportNotification,
-  checkForRemoteNotification
-} from '@/composable/notification'
 
 // По какой то причине необходимо явно установить роут в '/'
 // для корректного поведения в продакшен сборке
@@ -62,8 +58,6 @@ router.push('/')
 const appStore = useAppStore()
 const snippetStore = useSnippetStore()
 const route = useRoute()
-
-const { showSupportToast } = useSupportNotification()
 
 const isUpdateAvailable = ref(false)
 const isDev = import.meta.env.DEV
@@ -103,7 +97,6 @@ const init = async () => {
   }
 
   trackAppUpdate()
-  checkForRemoteNotification()
 }
 
 const setTheme = (theme: string) => {
@@ -171,12 +164,6 @@ watch(
 
 ipc.on('main:update-available', () => {
   isUpdateAvailable.value = true
-})
-
-ipc.on('main:focus', () => {
-  // Yes, this is that annoying piece of crap code.
-  // You can delete it, but know that you hurt me.
-  showSupportToast()
 })
 
 ipc.on('main:app-protocol', (event, payload: string) => {
