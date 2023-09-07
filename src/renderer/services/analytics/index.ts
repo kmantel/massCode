@@ -3,8 +3,8 @@ import { version, platform } from '@/electron'
 import axios from 'axios'
 
 const isDev = import.meta.env.DEV
-const api = import.meta.env.VITE_ANALYTICS_API
-const scope = import.meta.env.VITE_ANALYTICS_SCOPE
+const api = null
+const scope = null
 
 export const track = (event: TrackEvents, payload?: string) => {
   let os
